@@ -115,6 +115,9 @@ endif
 if $FENCVIEW_TELLENC == ''
     let $FENCVIEW_TELLENC ='tellenc'
 endif
+if !exists('g:fencview_show_progressbar')
+    let g:fencview_show_progressbar = 1
+endif
 
 
 let s:FencWinName="FencView_8795684"
@@ -1171,7 +1174,9 @@ function! s:FencHandleData() "{{{1
     endif
     for line in fbody
         let lnr+=1
-        call s:FencProgressBar(100*lnr/bodylen,' Processing... ',)
+        if g:fencview_show_progressbar
+            call s:FencProgressBar(100*lnr/bodylen,' Processing... ',)
+        endif
         let ci=0
         let ch="\x01"
         while ch!=''
