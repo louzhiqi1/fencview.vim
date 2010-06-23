@@ -1401,12 +1401,9 @@ let s:disable_autodetection=0
 
 augroup FencView
     au!
-augroup END
 
 if has('gui_running')
-    augroup FencView
-        au BufEnter *               call s:FencCreateMenu()
-    augroup END
+    au BufEnter *               call s:FencCreateMenu()
 endif
 
 command! -nargs=0                FencView       call s:ToggleFencView()
@@ -1421,5 +1418,7 @@ if g:fencview_autodetect
     exec 'au BufWinEnter ' . g:fencview_auto_patterns .
                 \' call s:CheckModelineFileEncoding()'
 endif
+
+augroup END
 
 " vim: set et fdm=marker sts=4 sw=4 tw=64:
