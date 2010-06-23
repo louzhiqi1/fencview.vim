@@ -650,7 +650,7 @@ endfunction
 
 
 function! s:EditAutoEncoding(...) "{{{1
-    if s:disable_autodetection || &buftype=='help'
+    if s:disable_autodetection || &buftype=='help' || &buftype=='quickfix'
         return
     endif
     if bufname(winnr())==s:FencWinName
