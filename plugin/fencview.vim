@@ -90,6 +90,10 @@
 if v:version < 700
      finish
 endif
+if exists('g:loaded_fencview')
+     finish
+endif
+let g:loaded_fencview = 1
 
 fun! s:escape(name)
   " shellescape() was added by patch 7.0.111
